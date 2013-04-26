@@ -1,7 +1,7 @@
 /*
-Encoder.h - Library for motor control
+Encoder.h - Library for Incremental Shaft Encoders
 Created by MJC; Mikkel, Joakim & Casper
-December 2011
+April 2013
 */
 
 #ifndef Encoder_h
@@ -13,12 +13,19 @@ class Encoder
 {
     public:
         Encoder(int in1, int in2);
-        int getRotations(int count);
-        float getSpeed(int count1, int count2, int timeDelay);
-        float getSpeed2(int count1, int count2, int timeDelay);
+        
+        int gearRatio;
+        
+        void setGearRatio(int ratio);
+        void setPulsesPerRotation(int ppr);
+        
+        void update();
+
+        int getRotations();
+
     private:
-        int _in1, _in2;
-        int count;
+        int _in1, _in2, _pulsesPerRotation;
+        unsigned long _pulses;
 };
 
 #endif

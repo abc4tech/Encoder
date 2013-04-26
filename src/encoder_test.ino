@@ -1,33 +1,28 @@
+/*
+encoder_test - Example using the Encoder library
+Created by MJC; Mikkel, Joakim & Casper
+April 2013
+*/
+
 #include "Encoder.h"
 
-//Sæt encoder op - tallene er hvilke digital-pins
-Encoder encoder(20,21);
+//Channel A and B
+Encoder testEncoder(20,21);
 
-//Encoder variable
-unsigned long aCount = 0;
-unsigned long omdrejninger = 0;
-
-//  Encoders
-void readEncoder();
+void readEncoder(){
+    testEncoder.update();
+}
 
 void setup(){
-    //Read from encoders
-    //Husk at ændre 3-tallet
+    //Setup Encoder values
+    testEncoder.setGearRatio(10);
+    testEncoder.setPulsesPerRotation(360);
+
+    //Software Interrupt
     attachInterrupt(3, readEncoder, RISING);
 }
 
 void loop(){
-
-    //Print antal ticks
-    Serial.println(aCount);
-
-    //Sæt antal omdrejninger
-    omdrejninger = encoder.getRotations(aCount);
-
-    //Print antal omdrejninger
-    Serial.println(omdrejninger);
-}
-
-void readEncoder(){
-    aCount ++;
+    //Output number of rotations
+    Serial.println(testEncoder.getRotations());
 }
