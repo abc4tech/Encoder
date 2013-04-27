@@ -14,6 +14,9 @@ void readEncoder(){
 }
 
 void setup(){
+    //Serial
+    Serial.begin(9600);
+
     //Setup Encoder values
     testEncoder.setGearRatio(10);
     testEncoder.setPulsesPerRotation(360);
