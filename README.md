@@ -1,7 +1,5 @@
 #Arduino Library for Incremental Shaft Encoders
-See
-    test_example.ino
-For how to use it.
+See test_example.ino for how to use it.
 
 #License
 
