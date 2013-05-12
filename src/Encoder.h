@@ -31,6 +31,8 @@ class Encoder
         
         void update();
 
+        int getPulses();
+
         int getRotations();
 
     private:

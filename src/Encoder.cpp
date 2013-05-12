@@ -43,6 +43,11 @@ void Encoder::update(){
     _pulses++;
 }
 
+int Encoder::getPulses()
+{
+    return _pulses;
+}
+
 int Encoder::getRotations()
 {
     return int(float(_pulses)/float(_pulsesPerRotation*gearRatio));

@@ -7,13 +7,16 @@ April 2013
 #include "Encoder.h"
 
 //Channel A and B
-Encoder testEncoder(20,21);
+Encoder testEncoder(11,10);
 
 void readEncoder(){
     testEncoder.update();
 }
 
 void setup(){
+    //Serial
+    Serial.begin(9600);
+
     //Setup Encoder values
     testEncoder.setGearRatio(10);
     testEncoder.setPulsesPerRotation(360);
@@ -24,5 +27,5 @@ void setup(){
 
 void loop(){
     //Output number of rotations
-    Serial.println(testEncoder.getRotations());
+    Serial.println(testEncoder.getPulses());
 }
